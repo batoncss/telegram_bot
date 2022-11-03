@@ -9,11 +9,9 @@ def processing(data):
 
 def for_bot_text(text):
     text = text.lower()
-    text = text.replace('/','')
+    text = text.replace('/', '')
     if text == 'кек':
         text_for_return = 'Чебурек'
-    elif text == 'start' or text == 'старт':
-        text_for_return = 'Привет, меня зовут Дима\nЯ люблю готовить и путешествовать по стране\nИщу работу программистом на Python'
     elif text == 'информация' or text == 'info':
         text_for_return = 'Мои поделки: github.com/batoncss\nМой VK:vk.com/batoncss'
     elif text == 'анекдот' or text == 'joke':
