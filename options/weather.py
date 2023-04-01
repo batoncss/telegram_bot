@@ -3,13 +3,12 @@ from requests import get
 
 def text_for_weather():
     site = "https://world-weather.ru/pogoda/russia/saint_petersburg/"
-    city_find = "|Санкт-Петербург|"
-    page = get(site)
+    headers = {'user-agent': 'my-app/0.0.1'}
+    page = get(site, headers=headers)
     data = page.text
-    find_start_false = data.find(city_find)
-    find_start = data.find("|", find_start_false + 1, )
-    find_finish = data.find("|", find_start + 1, )
+    find_start = data.find('weather-now-number">') + 20
+    find_finish = data.find('<', find_start + 1, )
     number = ""
-    for i in range(find_start + 1, find_finish):
+    for i in range(find_start, find_finish):
         number += data[i]
     return f'Погода в Санкт-Петербурге: {number}°C'
