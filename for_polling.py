@@ -5,7 +5,7 @@ from pathlib import Path
 
 def polling(polling_token, polling_update_id):
     while True:
-        data = get(f'https://api.telegram.org/bot{polling_token}/getUpdates?timeout=4&offset={polling_update_id}').json()['result']
+        data = get(f'https://api.telegram.org/bot{polling_token}/getUpdates?timeout=4&offset={polling_update_id}', timeout=1).json()['result']
         if data:
             polling_update_id = data[0]['update_id'] + 1
             return data[0], polling_update_id

@@ -10,6 +10,6 @@ while True:
         data_for_processing, update_id = polling(token, update_id)
         user, chat, user_text = processing(data_for_processing)
         bot_text = for_bot_text(user_text)
-        data = get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat}&text={bot_text}')
+        data = get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat}&text={bot_text}', timeout=1)
     except:
         error_massage()
